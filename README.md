@@ -56,5 +56,4 @@ System Administrator, and AWS Fresher roles**.
 ansible-playbook lamp.yml
 
 ## Project Screenshots
-
-<img width="812" height="434" alt="image" src="https://github.com/user-attachments/assets/c4df8e4e-8633-4c0b-bd90-8a0a9796b6d4" />
+<img width="812" height="434" alt="lamp " src="https://github.com/user-attachments/assets/dc428cbe-d133-46ec-97bf-e66e62e29786" />
