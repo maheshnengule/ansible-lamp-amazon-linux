@@ -1,0 +1,55 @@
+---
+- name: Install LAMP stack on Amazon Linux
+  hosts: localhost
+  become: yes
+
+  tasks:
+    # Install httpd
+    - name: Install httpd
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+
+    # Install MariaDB
+    - name: Install MariaDB server
+      ansible.builtin.dnf:
+        name: mariadb105-server
+        state: present
+
+    # Install PHP
+    - name: Install PHP packages
+      ansible.builtin.dnf:
+        name:
+          - php
+          - php-fpm
+        state: present
+
+    # Start and enable httpd
+    - name: Start and enable httpd
+      ansible.builtin.systemd:
+        name: httpd
+        state: started
+        enabled: yes
+
+    # Start and enable php-fpm
+    - name: Start and enable php-fpm
+      ansible.builtin.systemd:
+        name: php-fpm
+        state: started
+        enabled: yes
+
+    # Start and enable mariadb
+    - name: Start and enable mariadb
+      ansible.builtin.systemd:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    # Deploy PHP test file
+    - name: Deploy index.php
+      ansible.builtin.copy:
+        dest: /var/www/html/index.php
+        content: |
+          <?php
+          phpinfo();
+          ?>
